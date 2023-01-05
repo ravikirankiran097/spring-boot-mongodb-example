@@ -1,0 +1,16 @@
+version: "3"
+services:
+#MongoDB Configuration
+  cer_db:
+    image: mongo:latest
+    container_name: "cer_db"
+    ports:
+      - 27017:27017
+#Microservice Configuration
+  ecosystem-user-service:
+    image: spring_app:1.0
+    container_name: spring_app
+    ports:
+      - 8095:8095
+    links:
+      - cer_db
